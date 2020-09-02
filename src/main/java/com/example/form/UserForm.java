@@ -2,15 +2,15 @@ package com.example.form;
 
 import com.example.entity.User;
 
-public class RegistrationForm {
+public class UserForm {
 
     private String username;
     private String password;
 
-    public RegistrationForm() { }
+    public UserForm() { }
 
     /*
-    This method parses "RegistrationForm" object to entity "User".
+    This method parses "UserForm" object to entity "User".
      */
     public User composeUser() {
         User user = new User();
