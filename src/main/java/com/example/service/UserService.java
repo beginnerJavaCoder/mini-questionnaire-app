@@ -7,4 +7,7 @@ public interface UserService extends UserDetailsService {
 
     User findByUsername(String username);
 
+    boolean isUsernameAlreadyExists(String username);
+
+    User register(User candidate);
 }
