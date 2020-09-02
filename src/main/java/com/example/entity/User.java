@@ -18,12 +18,20 @@ public class User extends Model implements UserDetails {
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_roles", joinColumns = {@JoinColumn(name = "user_id")})
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private List<Role> roles;
+
+    @ElementCollection(targetClass = Answer.class)
+    @CollectionTable(name = "user_answers", joinColumns = {@JoinColumn(name = "user_id")})
+    @Column(name = "answer_id")
+    @JsonIgnore
+    private List<Answer> answers;
 
     public User() {
         roles = new ArrayList<>();
         roles.add(Role.USER);
+        answers = new ArrayList<>();
     }
 
     @Override
@@ -79,5 +87,13 @@ public class User extends Model implements UserDetails {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
     }
 }
