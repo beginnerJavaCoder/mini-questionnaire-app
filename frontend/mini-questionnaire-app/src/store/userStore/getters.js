@@ -13,3 +13,7 @@ export function getToken (state) {
 export function getUserInfo (state) {
   return state.userInfo
 }
+
+export function getUserRoles (state) {
+  return state.userInfo.roles
+}

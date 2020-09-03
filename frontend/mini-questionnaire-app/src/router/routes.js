@@ -21,6 +21,13 @@ const routes = [
       { path: '', component: () => import('pages/Registration.vue') }
     ]
   },
+  {
+    path: '/questionnaires',
+    component: () => import('../layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/QuestionnaireList.vue') }
+    ]
+  },
 
   // Always leave this as last one,
   // but you can also remove it

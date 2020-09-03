@@ -8,8 +8,10 @@
         </div>
       </div>
       <div v-else>
-        GG my friend!
-        {{this.$store.getters['userStore/getToken']}}
+        <q-btn to="/questionnaires" label="Выбрать анкету" outline color="primary" />
+        <div v-if="this.$store.getters['userStore/getUserRoles'].indexOf('ADMIN') !== -1">
+          <q-btn to="/questionnaire" label="Создать анкету" outline color="primary" />
+        </div>
       </div>
     </q-page>
   </q-page-container>

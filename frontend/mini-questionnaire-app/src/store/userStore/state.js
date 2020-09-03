@@ -3,7 +3,8 @@ export default function () {
     userInfo: {
       token: '',
       username: String,
-      userId: Number
+      userId: Number,
+      roles: []
     }
   }
 }
