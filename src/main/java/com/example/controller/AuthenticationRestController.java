@@ -45,11 +45,12 @@ public class AuthenticationRestController {
             User user = (User) userService.loadUserByUsername(username);
             String token = jwtTokenUtil.generateToken(user);
 
-            Map<String, String> response = new HashMap<>();
+            Map<String, Object> response = new HashMap<>();
 
             response.put("token", token);
             response.put("username", user.getUsername());
-            response.put("userId", String.valueOf(user.getId()));
+            response.put("userId", user.getId());
+            response.put("roles", user.getRoles());
 
             return ResponseEntity.ok(response);
 
