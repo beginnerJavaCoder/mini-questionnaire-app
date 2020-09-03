@@ -4,9 +4,11 @@ import com.example.entity.Questionnaire;
 import com.example.repository.QuestionnaireRepository;
 import com.example.service.QuestionnaireService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class QuestionnaireServiceImpl implements QuestionnaireService {
 
     private final QuestionnaireRepository questionnaireRepository;

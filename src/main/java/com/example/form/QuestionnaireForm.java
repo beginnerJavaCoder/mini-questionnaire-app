@@ -17,11 +17,8 @@ public class QuestionnaireForm {
         Questionnaire questionnaire = new Questionnaire();
         questionnaire.setTitle(title);
 
-        for (Question question : questions) {
-            questionnaire.addQuestion(question);
-            for (Answer answer : question.getAnswerOptions()) {
-                question.addAnswer(answer);
-            }
+        for (Question q : questions) {
+            questionnaire.addQuestion(q);
         }
 
         return questionnaire;
