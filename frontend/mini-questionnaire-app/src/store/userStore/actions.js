@@ -6,6 +6,11 @@ export async function fetchUserInfo (context, request) {
     },
     body: JSON.stringify(request)
   })
-  const userInfo = await response.json()
-  context.commit('updateUserInfo', userInfo)
+  if (response.ok) {
+    const userInfo = await response.json()
+    context.commit('updateUserInfo', userInfo)
+    return true
+  } else {
+    return false
+  }
 }
