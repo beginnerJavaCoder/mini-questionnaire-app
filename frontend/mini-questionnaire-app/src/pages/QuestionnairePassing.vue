@@ -29,8 +29,11 @@
         </q-form>
       </div>
     </div>
-    <div v-else>
+    <div v-else class="text-h5 q-mt-lg q-mb-lg q-ml-sm">
       <p>Вы успешно прошли анкету!</p>
+      <div class="flex flex-center">
+      <q-btn to="/" label="На главную" outline color="primary" />
+      </div>
     </div>
   </q-page>
 </template>

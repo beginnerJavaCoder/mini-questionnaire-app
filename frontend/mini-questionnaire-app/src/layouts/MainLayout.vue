@@ -5,6 +5,12 @@
         <q-toolbar-title>
           Mini Questionnaire App
         </q-toolbar-title>
+        <q-btn
+          v-if="this.$store.getters['userStore/getToken']"
+          flat
+          dense
+          @click="logout"
+          label="Выйти из аккаунта" />
       </q-toolbar>
     </q-header>
     <q-page-container>
@@ -16,6 +22,11 @@
 <script>
 
 export default {
-  name: 'MainLayout'
+  name: 'MainLayout',
+  methods: {
+    logout () {
+      this.$store.dispatch('userStore/deleteUserInfo')
+    }
+  }
 }
 </script>

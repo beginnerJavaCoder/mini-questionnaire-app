@@ -14,3 +14,7 @@ export async function fetchUserInfo (context, request) {
     return false
   }
 }
+
+export function deleteUserInfo (context) {
+  context.commit('deleteUserInfo')
+}
