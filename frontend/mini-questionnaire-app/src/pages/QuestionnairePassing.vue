@@ -11,10 +11,13 @@
             <div>
               <p>{{question.description}}</p>
               <div
-                v-for="answer in question.answerOptions" :key="answer.id">
+                v-for="(answer, answerIndex) in question.answerOptions" :key="answer.id">
                 <div class="q-pa-md">
-                  <div class="q-gutter-sm">
-                    <q-radio v-model="choices[questionIndex]" :val="answer" :label="answer.description" />
+                  <div class="q-gutter-sm" v-if="question.hasMultipleAnswers">
+                    <q-checkbox v-model="multipleAnswersModel[questionIndex][answerIndex]" :label="answer.description" />
+                  </div>
+                  <div class="q-gutter-sm" v-else>
+                    <q-radio v-model="singleAnswers[questionIndex]" :val="answer" :label="answer.description" />
                   </div>
                 </div>
               </div>
@@ -37,7 +40,8 @@ export default {
   data () {
     return {
       questionnaire: this.getQuestionnaire(),
-      choices: [],
+      singleAnswers: [],
+      multipleAnswersModel: this.init(),
       isPass: false
     }
   },
@@ -50,9 +54,38 @@ export default {
         }
       }
     },
+    init () {
+      const q = this.getQuestionnaire()
+      const arraysForMultiple = []
+      let currentIndex = 0
+      let tmpArr
+      for (const question of q.questions) {
+        if (question.hasMultipleAnswers) {
+          tmpArr = []
+          for (let i = 0; i < question.answerOptions.length; i++) {
+            tmpArr.push(false)
+          }
+          arraysForMultiple[currentIndex++] = tmpArr
+        } else arraysForMultiple[currentIndex++] = []
+      }
+      return arraysForMultiple
+    },
     async onSubmit () {
+      const allAnswers = []
+      for (const answer of this.singleAnswers) {
+        if (answer) {
+          allAnswers.push(answer)
+        }
+      }
+      for (let i = 0; i < this.multipleAnswersModel.length; i++) {
+        for (let j = 0; j < this.multipleAnswersModel[i].length; j++) {
+          if (this.multipleAnswersModel[i][j] === true) {
+            allAnswers.push(this.questionnaire.questions[i].answerOptions[j])
+          }
+        }
+      }
       const request = {
-        answers: this.choices,
+        answers: allAnswers,
         username: this.$store.getters['userStore/getUsername']
       }
       const response = await fetch('http://localhost:8081/questionnaires/passing', {
