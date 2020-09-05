@@ -8,9 +8,21 @@
         </div>
       </div>
       <div v-else>
-        <q-btn to="/questionnaires" label="Выбрать анкету" outline color="primary" />
+        <q-btn
+          to="/questionnaires"
+          label="Выбрать анкету"
+          outline color="primary"
+          @click="fetchQuestionnaires"/>
         <div v-if="this.$store.getters['userStore/getUserRoles'].indexOf('ADMIN') !== -1">
-          <q-btn to="/questionnaire" label="Создать анкету" outline color="primary" />
+          <q-btn
+            to="/statistics"
+            label="Посмотреть ответы пользователей"
+            outline color="primary"
+            @click="fetchUserAnswers"/>
+          <q-btn
+            to="/creation"
+            label="Создать анкету"
+            outline color="primary" />
         </div>
       </div>
     </q-page>
@@ -19,6 +31,16 @@
 
 <script>
 export default {
-  name: 'Main'
+  name: 'Main',
+  methods: {
+    async fetchQuestionnaires () {
+      await this.$store.dispatch('questionnaireStore/fetchQuestionnaires',
+        this.$store.getters['userStore/getToken'])
+    },
+    async fetchUserAnswers () {
+      await this.$store.dispatch('statisticsStore/fetchStatistics',
+        this.$store.getters['userStore/getToken'])
+    }
+  }
 }
 </script>
