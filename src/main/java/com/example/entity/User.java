@@ -22,9 +22,11 @@ public class User extends Model implements UserDetails {
     @Enumerated(EnumType.STRING)
     private List<Role> roles;
 
-    @ElementCollection(targetClass = Answer.class)
-    @CollectionTable(name = "user_answers", joinColumns = {@JoinColumn(name = "user_id")})
-    @Column(name = "answer_id")
+    @ManyToMany
+    @JoinTable(name = "user_answers",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "answer_id")
+    )
     @JsonIgnore
     private List<Answer> answers;
 
