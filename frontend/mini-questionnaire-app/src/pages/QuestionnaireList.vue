@@ -1,6 +1,16 @@
 <template>
   <q-page class="flex flex-center">
-    USD
+    <div
+      class="q-pa-md q-gutter-sm"
+      v-for="questionnaire in this.$store.getters['questionnaireStore/getAllQuestionnaires']"
+      :key="questionnaire.id"
+      >
+        <q-btn
+          :to="{path: '/questionnaires/' + questionnaire.id}"
+          outline color="primary">
+          <q-item-label>{{ questionnaire.title }}</q-item-label>
+        </q-btn>
+    </div>
   </q-page>
 </template>
 
