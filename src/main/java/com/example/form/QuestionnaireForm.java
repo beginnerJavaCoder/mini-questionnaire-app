@@ -1,6 +1,5 @@
 package com.example.form;
 
-import com.example.entity.Answer;
 import com.example.entity.Question;
 import com.example.entity.Questionnaire;
 
