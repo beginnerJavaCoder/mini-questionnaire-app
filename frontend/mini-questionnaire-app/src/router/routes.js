@@ -49,6 +49,20 @@ const routes = [
       { path: '', component: () => import('pages/QuestionnaireCreation.vue') }
     ]
   },
+  {
+    path: '/edit',
+    component: () => import('../layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/EditorQuestionnaireList.vue') }
+    ]
+  },
+  {
+    path: '/edit/:id',
+    component: () => import('../layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/EditQuestionnaire.vue') }
+    ]
+  },
 
   // Always leave this as last one,
   // but you can also remove it

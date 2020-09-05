@@ -7,13 +7,14 @@
           <q-btn to="/register" label="Регистрация" outline color="primary" />
         </div>
       </div>
-      <div v-else>
+      <div class="flex flex-center" v-else>
         <q-btn
           to="/questionnaires"
-          label="Выбрать анкету"
+          label="Пройти анкету"
           outline color="primary"
           @click="fetchQuestionnaires"/>
-        <div v-if="this.$store.getters['userStore/getUserRoles'].indexOf('ADMIN') !== -1">
+        <div
+          v-if="this.$store.getters['userStore/getUserRoles'].indexOf('ADMIN') !== -1">
           <q-btn
             to="/statistics"
             label="Посмотреть ответы пользователей"
@@ -22,6 +23,11 @@
           <q-btn
             to="/creation"
             label="Создать анкету"
+            outline color="primary" />
+          <q-btn
+            to="/edit"
+            label="Редактировать анкету"
+            @click="fetchQuestionnaires"
             outline color="primary" />
         </div>
       </div>
