@@ -7,6 +7,7 @@ export default function () {
         questions: [
           {
             id: Number,
+            hasMultipleAnswers: Boolean,
             description: String,
             answerOptions: [
               {

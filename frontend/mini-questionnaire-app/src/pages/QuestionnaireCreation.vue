@@ -7,6 +7,9 @@
         <div
           v-for="(question, questionIndex) in questions" :key="questionIndex"
         >
+          <div class="q-gutter-sm">
+            <q-checkbox v-model="question.hasMultipleAnswers" label="На этот вопрос можно дать несколько ответов?" />
+          </div>
           <q-input outlined v-model="question.description" :label="questionIndex+1 + 'й вопрос'" />
           <q-btn label="Добавить вариант ответа" @click="addAnswerOption(questionIndex)" outline color="primary"/>
           <div
@@ -41,6 +44,7 @@ export default {
       title: '',
       questions: [{
         description: 'Первый вопрос',
+        hasMultipleAnswers: false,
         answerOptions: [
           { description: 'Первый вариант ответа' },
           { description: 'Второй вариант ответа' }
@@ -73,6 +77,7 @@ export default {
     addQuestion () {
       this.questions.push({
         description: 'Новый вопрос',
+        hasMultipleAnswers: false,
         answerOptions: [
           { description: 'Первый вариант ответа' },
           { description: 'Второй вариант ответа' }
