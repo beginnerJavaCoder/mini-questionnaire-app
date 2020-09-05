@@ -13,6 +13,9 @@ public class Question extends Model {
 
     private String description;
 
+    @Column(name = "has_multiple_answers")
+    private Boolean hasMultipleAnswers;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "questionnaire_id")
     @JsonBackReference
@@ -46,6 +49,14 @@ public class Question extends Model {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean isHasMultipleAnswers() {
+        return hasMultipleAnswers;
+    }
+
+    public void setHasMultipleAnswers(Boolean hasMultipleAnswers) {
+        this.hasMultipleAnswers = hasMultipleAnswers;
     }
 
     public Questionnaire getSourceQuestionnaire() {
