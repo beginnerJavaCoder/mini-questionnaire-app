@@ -2,7 +2,9 @@ package com.example.controller;
 
 import com.example.entity.Questionnaire;
 import com.example.form.QuestionnaireForm;
+import com.example.form.QuestionnairePassingForm;
 import com.example.service.QuestionnaireService;
+import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,14 +13,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping(value = "/questionnaires")
 public class QuestionnaireRestController {
 
     private final QuestionnaireService questionnaireService;
+    private final UserService userService;
 
     @Autowired
-    public QuestionnaireRestController(QuestionnaireService questionnaireService) {
+    public QuestionnaireRestController(QuestionnaireService questionnaireService,
+                                       UserService userService) {
         this.questionnaireService = questionnaireService;
+        this.userService = userService;
     }
 
     @GetMapping
@@ -68,6 +74,13 @@ public class QuestionnaireRestController {
         Questionnaire questionnaire = form.composeQuestionnaire();
         questionnaire.setId(id);
         questionnaireService.save(questionnaire);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/passing")
+    public ResponseEntity<?> passQuestionnaire(@RequestBody QuestionnairePassingForm form) {
+        userService.saveAnswers(form.getUsername(), form.getAnswers());
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
