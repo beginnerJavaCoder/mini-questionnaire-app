@@ -8,6 +8,7 @@
         <q-btn
           v-if="this.$store.getters['userStore/getToken']"
           flat
+          to="/"
           dense
           @click="logout"
           label="Выйти из аккаунта" />

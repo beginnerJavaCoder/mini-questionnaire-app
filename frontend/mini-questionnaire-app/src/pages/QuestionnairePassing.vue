@@ -1,27 +1,33 @@
 <template>
   <q-page class="flex flex-center">
     <div v-if="!isPass" class="q-pa-md">
-      <div class="q-gutter-md" style="max-width: 300px">
+      <div class="q-gutter-md">
         <q-form @submit="onSubmit" class="q-gutter-md">
-          <q-item-label>{{questionnaire.title}}</q-item-label>
+          <q-item-label class="text-h4">{{questionnaire.title}}</q-item-label>
+          <br>
           <div
             v-for="(question, questionIndex) in questionnaire.questions" :key="question.id"
             v-bind:question="question"
           >
-            <div>
-              <p>{{question.description}}</p>
-              <div
-                v-for="(answer, answerIndex) in question.answerOptions" :key="answer.id">
-                <div class="q-pa-md">
-                  <div class="q-gutter-sm" v-if="question.hasMultipleAnswers">
-                    <q-checkbox v-model="multipleAnswersModel[questionIndex][answerIndex]" :label="answer.description" />
-                  </div>
-                  <div class="q-gutter-sm" v-else>
-                    <q-radio v-model="singleAnswers[questionIndex]" :val="answer" :label="answer.description" />
+            <q-card class="my-card">
+              <q-card-section>
+                <div>
+                  <p class="text-h6 flex-center flex q-gutter-md">{{question.description}}</p>
+                  <div
+                    v-for="(answer, answerIndex) in question.answerOptions" :key="answer.id">
+                    <div class="q-pa-md">
+                      <div class="q-gutter-sm text-h6" v-if="question.hasMultipleAnswers">
+                        <q-checkbox v-model="multipleAnswersModel[questionIndex][answerIndex]" :label="answer.description" />
+                      </div>
+                      <div class="text-h6 q-gutter-sm" v-else>
+                        <q-radio v-model="singleAnswers[questionIndex]" :val="answer" :label="answer.description" />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </q-card-section>
+            </q-card>
+
           </div>
           <div class="flex flex-center">
             <q-btn label="Отправить" type="submit" outline color="primary"/>
