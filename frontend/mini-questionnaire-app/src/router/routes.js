@@ -28,6 +28,27 @@ const routes = [
       { path: '', component: () => import('pages/QuestionnaireList.vue') }
     ]
   },
+  {
+    path: '/questionnaires/:id',
+    component: () => import('../layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/QuestionnairePassing.vue') }
+    ]
+  },
+  {
+    path: '/statistics',
+    component: () => import('../layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Statistics.vue') }
+    ]
+  },
+  {
+    path: '/creation',
+    component: () => import('../layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/QuestionnaireCreation.vue') }
+    ]
+  },
 
   // Always leave this as last one,
   // but you can also remove it
