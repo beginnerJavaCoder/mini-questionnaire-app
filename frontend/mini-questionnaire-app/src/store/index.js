@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import userStore from './userStore'
+import questionnaireStore from './questionnaireStore'
+import statisticsStore from './statisticsStore'
 
 Vue.use(Vuex)
 
@@ -17,7 +19,9 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      userStore
+      userStore,
+      questionnaireStore,
+      statisticsStore
     },
 
     // enable strict mode (adds overhead!)
