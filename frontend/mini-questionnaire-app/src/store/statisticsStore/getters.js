@@ -1,3 +1,3 @@
 export function getStatistics (state) {
-  return state.answers
+  return state.statistics
 }

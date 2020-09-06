@@ -1,3 +1,3 @@
-export function updateStatistics (state, answers) {
-  state.answers = answers
+export function updateStatistics (state, statistics) {
+  state.statistics = statistics
 }

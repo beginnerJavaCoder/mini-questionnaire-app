@@ -1,5 +1,5 @@
 export async function fetchStatistics (context, token) {
-  const response = await fetch('http://localhost:8081/users/questionnaires?userId=3', {
+  const response = await fetch('http://localhost:8081/users/statistics', {
     headers: {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token
@@ -7,7 +7,7 @@ export async function fetchStatistics (context, token) {
   }
   )
   if (response.ok) {
-    const answers = await response.json()
-    context.commit('updateStatistics', answers)
+    const statistics = await response.json()
+    context.commit('updateStatistics', statistics)
   }
 }
