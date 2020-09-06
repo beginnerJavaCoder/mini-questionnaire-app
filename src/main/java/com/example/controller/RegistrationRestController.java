@@ -19,7 +19,6 @@ public class RegistrationRestController {
         this.userService = userService;
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping
     public ResponseEntity<User> register(@RequestBody UserForm userForm) {
         User saved = userService.register(userForm.composeUser());

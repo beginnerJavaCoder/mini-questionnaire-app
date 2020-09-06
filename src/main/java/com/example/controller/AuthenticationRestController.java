@@ -34,7 +34,6 @@ public class AuthenticationRestController {
         this.userService = userService;
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping
     public ResponseEntity<?> authenticateUser(@RequestBody UserForm userForm) {
         try {
