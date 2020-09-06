@@ -97,7 +97,7 @@ export default {
         answers: allAnswers,
         username: this.$store.getters['userStore/getUsername']
       }
-      const response = await fetch('http://localhost:8081/questionnaires/passing', {
+      const response = await fetch('http://localhost:8080/questionnaires/passing', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

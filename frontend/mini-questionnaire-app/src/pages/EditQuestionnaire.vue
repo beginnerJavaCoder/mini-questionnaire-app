@@ -67,7 +67,7 @@ export default {
         title: this.questionnaire.title,
         questions: this.questionnaire.questions
       }
-      const response = await fetch('http://localhost:8081/questionnaires/' + this.questionnaire.id, {
+      const response = await fetch('http://localhost:8080/questionnaires/' + this.questionnaire.id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

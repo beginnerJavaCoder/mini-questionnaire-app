@@ -1,5 +1,5 @@
 export async function fetchStatistics (context, token) {
-  const response = await fetch('http://localhost:8081/users/statistics', {
+  const response = await fetch('http://localhost:8080/users/statistics', {
     headers: {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token
