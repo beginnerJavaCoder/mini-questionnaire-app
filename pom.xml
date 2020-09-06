@@ -11,7 +11,7 @@
     <properties>
         <java.version>1.8</java.version>
         <jsonwebtoken.version>0.9.1</jsonwebtoken.version>
-        <postgresql.version>42.2.14</postgresql.version>
+        <h2.version>1.4.200</h2.version>
     </properties>
 
     <parent>
@@ -42,9 +42,9 @@
             <version>${jsonwebtoken.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
             <scope>runtime</scope>
         </dependency>
     </dependencies>

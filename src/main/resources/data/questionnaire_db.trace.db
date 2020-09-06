@@ -1,0 +1,13 @@
+2020-09-06 16:24:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "QUESTIONNAIRE_DB" не найдена
+Table "QUESTIONNAIRE_DB" not found; SQL statement:
+select * from questionnaire_db [42102-200]
+2020-09-06 16:29:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "TEST" уже существует
+Table "TEST" already exists; SQL statement:
+CREATE TABLE TEST(ID INT PRIMARY KEY,
+   NAME VARCHAR(255)) [42101-200]
+2020-09-06 16:29:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "TEST[*]"; ожидалось "TRUNCATE"
+Syntax error in SQL statement "TEST[*]"; expected "TRUNCATE"; SQL statement:
+TEST [42001-200]
