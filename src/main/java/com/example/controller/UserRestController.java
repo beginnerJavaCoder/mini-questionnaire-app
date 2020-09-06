@@ -32,9 +32,9 @@ public class UserRestController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @GetMapping("/questionnaires")
-    public ResponseEntity<?> getUserAnswersOnQuestionnaire(@RequestParam Integer userId) {
+    @GetMapping("/statistics")
+    public ResponseEntity<?> getStatistics() {
 
-        return new ResponseEntity<>(userService.getStatistics(userId), HttpStatus.OK);
+        return new ResponseEntity<>(userService.getStatistics(), HttpStatus.OK);
     }
 }

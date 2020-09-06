@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,8 +48,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Answer> getStatistics(Integer id) {
-        return findById(id).getAnswers();
+    public List<Object>  getStatistics() {
+        List<User> users = findAll();
+        List<Object> statistics = new ArrayList<>();
+        for (User user : users) {
+            List<String> questionAnswer = new ArrayList<>();
+            for (Answer answer : user.getAnswers()) {
+                questionAnswer.add(answer.getSourceQuestion().getDescription() + " " + answer.getDescription());
+            }
+            Object[] tmp = new Object[]{user.getUsername(), questionAnswer};
+            statistics.add(tmp);
+        }
+
+        return statistics;
     }
 
     @Override

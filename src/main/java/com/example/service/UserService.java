@@ -15,7 +15,7 @@ public interface UserService extends UserDetailsService {
 
     User findByUsername(String username);
 
-    List<Answer> getStatistics(Integer id);
+    List<Object> getStatistics();
 
     boolean isUsernameAlreadyExists(String username);
 
